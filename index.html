@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <!--Styles CSS-->
+    <link rel="stylesheet" href="login.css" type="text/css">
+    <link rel="stylesheet" href="signup.css" type="text/css">
+    <link rel="stylesheet" href="forgotPassword.css" type="text/css">
+
+    <!--Bootstrap icon-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    
+    <!--Login Script-->
+    <script type="text/javascript" src="Login.js"></script>
+</head>
+<body>
+
+    <main>
+        <div id="Login">
+            <div class="Login-container">
+                <h1 id="Login-mainTitle">Login</h1>
+                
+                <form class="Login-form">
+                    <div class="input-with-icon">
+                        <!--Username-->
+                        <label class="labels-formsInput" for="username"><i class="bi bi-person-fill"></i></label>
+                        <input type="text" id="username" class="Login-inputs" placeholder="Username" required>
+                    </div>
+    
+                    <div class="input-with-icon">
+                        <!--Password-->
+                        <label class="labels-formsInput" for="username"><i class="bi bi-key-fill"></i></label>
+                        <input type="password" id="password" class="Login-inputs" placeholder="Password" required>
+                    </div>
+                </form>
+                <a id="forgotPassword_Link" href="#forgotPassword">Have you forgot your password?</a>
+                <button type="submit" id="Login-button" onclick="sign_in_verification()">Sign In</button>
+    
+                <p id="Login-ErrorText"></p>
+                <a class="register-now" href="#Sign-up">Do you have an account?</a>
+            </div>
+        </div>
+    </main>
+
+
+<div id="Sign-up">
+     <div id="signup-container">
+        <h1 id="Sign-up-title">Sign up</h1><br>
+        <span>If you have an account, go here: <a class="Login-go" href="#Login"> Login</a></span><br><br><br>
+        <form method="post">
+            <input type="text" id="createUsername" placeholder="Username" onkeyup="checkData()">
+            <input type="date" id="create-date" onchange="checkData()"><br><br><br><br><br>
+        
+            <input type="password" id="create-password" placeholder="Password" onkeyup="checkData()" onkeyup="checkPassword()">
+            <input type="password" id="repeat-password" placeholder="Confirm Password" onkeyup="checkPassword()" ><br><br><br>
+        </form>
+
+        <span id="confirm_password_msg"></span><br><br>
+        <ul class="required">
+            <li id="usernamechars"> The username must have at least 1 character</li><br>
+            <li id="birthday">Set your Birthday</li><br>
+            <li id="capital_letter"> The Password must contain one capital letter</li><br>
+            <li id="number">The password must contain a number </li><br>
+            <li id="special_character"> The Password must contain one special character</li>
+        </ul>
+        
+        <!-------------------Messages-------------->
+        <dialog id="mydialog">
+            <h2 id="thanks_dialog_title">Thanks for Signing up! 😊</h2><hr>
+            <p id="dialog-text"> if you wish you can sign in here<br> <a href="#Login" id="link-dialog-text">Login</a> </p>
+            <button id="btn-close">Close</button>
+        </dialog>
+
+        <dialog id="mydialog_UserExist">
+            <h2 id="UserExist_title">Oh, Sorry 😞</h2><hr><br>
+            <p id="UserExist-text">This User already exists.<br> You must use other Username</p><br>
+            <button id="btn_close_UserExist">Close</button>
+        </dialog>
+<br><br>
+
+        <button id="Register-btn" type="button" onclick="sign_up()">Sign up</button>
+    </div> 
+</div>
+</body>
+</html>
+<br><br><br>
+
+<!--------------------Forgot Password---------------->
+<div id="forgotPassword">
+    <div id="forgotPassword-container">
+        <form method="post">
+            <fieldset id="formPassword">
+                <legend><b>Recover Password</b></legend>
+                <span>If you have remembered your password,<br> please go to <a class="Login-go" href="#Login"> Login</a></span><br><br>
+                
+                <div class="fieldsRecoverPassword">
+                    <label class="label_Fields">Username</label>
+                    <input type="text" id="username_RecoverPassword"><br>
+                    
+
+                    <label class="label_Fields">Birth</label>
+                    <input type="date" id="Birthday_RecoverPassword"><br>
+                </div>
+                <br>
+                
+                <button id="RecoverPassword_btn" type="button" onclick="openRecoveryPasswordDialog()">Recover</button>
+                <p id="recoverPassword_error"></p>
+            </fieldset>
+        </form>
+    </div>
+
+    <dialog id="dialog_RecoverPsw">
+        <h2 id="RecoverPsw_dialog_title">Set your New Password </h2>
+        <hr><br>
+
+        <input type="password" id="passwordRecovery"></input><br>
+        <label class="label_Fields"><b>New Password</b></label><br>
+        <br>
+        <input type="password" id="passwordRecovery2"></input><br>
+        <label class="label_Fields"><b>Confirm Password</b></label><br><br>
+        <button id="btn-close-RecoverPsw">Close</button>
+        <button id="btn-RecoverPsw" onclick=" recoverPassword()">Accept</button>
+    </dialog>
+
+</div>
+
+</body>
+</html>
